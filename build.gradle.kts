@@ -23,6 +23,10 @@ buildscript {
   }
 }
 
+plugins {
+  alias(libs.plugins.ben.manes.versions)
+}
+
 allprojects {
   tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
