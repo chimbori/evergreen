@@ -26,8 +26,12 @@ val versionMinor = 0
 val versionPatch = 0
 
 android {
+  namespace = "app.evergreen"
   compileSdk = 33
 
+  buildFeatures {
+    buildConfig = true
+  }
   defaultConfig {
     applicationId = "app.evergreen"
     minSdk = 21
