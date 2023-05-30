@@ -11,26 +11,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
-  extra["kotlinVersion"] = "1.6.21"
-
   repositories {
     google()
-    mavenCentral()
   }
-
   dependencies {
-    classpath("com.android.tools.build:gradle:7.2.1")
-    classpath(kotlin("gradle-plugin", version = rootProject.extra["kotlinVersion"] as String?))
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
+    classpath(libs.android.gradle.plugin)
+    classpath(libs.kotlin.plugin)
   }
 }
 
 allprojects {
+  tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions {
+      allWarningsAsErrors = true
+    }
+  }
   repositories {
     google()
     mavenCentral()

@@ -1,0 +1,30 @@
+[versions]
+compileSdk = "33"
+targetSdk = "33"
+minSdk = "28"
+
+kotlin = "1.8.20"
+coroutines = "1.6.4"
+gradle-plugin = "8.0.2"
+moshi = "1.13.0"
+
+[libraries]
+# buildscript.dependencies
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "gradle-plugin" }
+kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# dependencies
+androidx-constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+androidx-core-ktx = "androidx.core:core-ktx:1.8.0"
+androidx-leanback = "androidx.leanback:leanback:1.0.0"
+androidx-workmanager-runtime = "androidx.work:work-runtime-ktx:2.7.1"
+coil = "io.coil-kt:coil:2.1.0"
+coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
+moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+okhttp = "com.squareup.okhttp3:okhttp:4.11.0"
+
+[plugins]
+play-publisher = { id = "com.github.triplet.play", version = "3.8.1" }

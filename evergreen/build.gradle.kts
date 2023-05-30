@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.config.KotlinCompilerVersion
+import org.gradle.api.JavaVersion.VERSION_17
 
 // Copyright 2020 Google LLC
 //
@@ -18,7 +18,7 @@ plugins {
   id("com.android.application")
   id("kotlin-android")
   kotlin("kapt")
-  id("com.github.triplet.play") version "3.6.0"
+  alias(libs.plugins.play.publisher)
 }
 
 val versionMajor = 1
@@ -38,7 +38,6 @@ android {
     targetSdk = 33
     versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
     versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
-    vectorDrawables.useSupportLibrary = true
   }
 
   signingConfigs {
@@ -64,27 +63,28 @@ android {
       signingConfig = signingConfigs.getByName("appSigningKey")
     }
   }
+
+  kotlinOptions {
+    jvmTarget = "17"
+  }
+  compileOptions {
+    sourceCompatibility = VERSION_17
+    targetCompatibility = VERSION_17
+  }
 }
 
 dependencies {
-  // Kotlin.
-  implementation(kotlin("stdlib", KotlinCompilerVersion.VERSION))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2")
-
-  // AndroidX
-  implementation("androidx.core:core-ktx:1.8.0")
-  implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-  implementation("androidx.leanback:leanback:1.0.0")
-  implementation("androidx.work:work-runtime:2.7.1")
-
-  // Moshi
-  kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
-  implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
-  implementation("com.squareup.moshi:moshi-adapters:1.13.0")
-
-  // Third Party Libraries
-  implementation("com.squareup.okhttp3:okhttp:4.9.3")
-  implementation("io.coil-kt:coil:2.1.0")
+  implementation(libs.androidx.constraintlayout)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.leanback)
+  implementation(libs.androidx.workmanager.runtime)
+  implementation(libs.coil)
+  implementation(libs.coroutines)
+  implementation(libs.kotlin.stdlib)
+  implementation(libs.moshi)
+  implementation(libs.moshi.adapters)
+  implementation(libs.okhttp)
+  kapt(libs.moshi.kotlin.codegen)
 }
 
 play {
