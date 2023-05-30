@@ -7,13 +7,12 @@
 # Write each command to stdout before executing.
 set -eux
 
-# Keep this in sync with .gitignore to prevent the unencrypted files from being
-# accidentally checked in.
-ENCRYPTED_FILES=("signing-keys.keystore" "service-account-keys.json")
-
-for FILE in ${ENCRYPTED_FILES[@]}; do
+for GPG_FILE in *.gpg; do
+  ORIGINAL_FILE="${GPG_FILE/.gpg/}"
+  echo $ORIGINAL_FILE
+  echo $GPG_FILE
   gpg --quiet --batch --yes --decrypt \
       --passphrase="$GPG_PASSPHRASE" \
-      --output "$FILE" \
-      "$FILE.gpg"
+      --output "$ORIGINAL_FILE" \
+      "$GPG_FILE"
 done
