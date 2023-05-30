@@ -36,6 +36,7 @@ class ApkViewModel(context: Context, updatable: Updatable) : AbstractUpdatableVi
       }
     }
 
+  @Suppress("DEPRECATION")
   override val installedVersionCode: Long?
     get() = if (updatable.id == null) {
       null
@@ -47,6 +48,7 @@ class ApkViewModel(context: Context, updatable: Updatable) : AbstractUpdatableVi
       }
     }
 
+  @Suppress("DEPRECATION")
   override val titleText: String
     get() = try {
       val packageManager = context.packageManager
