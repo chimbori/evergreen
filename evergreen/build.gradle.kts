@@ -89,11 +89,7 @@ dependencies {
 
 play {
   serviceAccountCredentials.set(file("../service-account-keys.json"))
-
-  // GitHub Actions automatically pushes to Alpha, so that’s our starting point.
-  track.set("alpha")
+  track.set("alpha")  // GitHub Actions automatically pushes to Alpha, so that’s our starting point.
   fromTrack.set("alpha")
-
-  // By default, promote to Beta (without requiring any additional arguments on the command line.)
-  promoteTrack.set("beta")
+  promoteTrack.set("beta")  // By default, promote to Beta
 }
