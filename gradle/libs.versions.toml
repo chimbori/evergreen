@@ -6,7 +6,7 @@ minSdk = "28"
 kotlin = "1.8.20"
 coroutines = "1.6.4"
 gradle-plugin = "8.0.2"
-moshi = "1.13.0"
+moshi = "1.15.0"
 
 [libraries]
 # buildscript.dependencies
