@@ -17,7 +17,7 @@ import org.gradle.api.JavaVersion.VERSION_17
 plugins {
   id("com.android.application")
   id("kotlin-android")
-  kotlin("kapt")
+  alias(libs.plugins.ksp)
   alias(libs.plugins.play.publisher)
 }
 
@@ -84,7 +84,7 @@ dependencies {
   implementation(libs.moshi)
   implementation(libs.moshi.adapters)
   implementation(libs.okhttp)
-  kapt(libs.moshi.kotlin.codegen)
+  ksp(libs.moshi.kotlin.codegen)
 }
 
 play {

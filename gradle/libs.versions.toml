@@ -4,6 +4,7 @@ targetSdk = "33"
 minSdk = "28"
 
 kotlin = "1.9.20"
+ksp = "1.9.20-1.0.13"
 coroutines = "1.6.4"
 gradle-plugin = "8.1.2"
 moshi = "1.15.0"
@@ -28,4 +29,5 @@ okhttp = "com.squareup.okhttp3:okhttp:4.11.0"
 
 [plugins]
 ben-manes-versions = { id = "com.github.ben-manes.versions", version = "0.46.0" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 play-publisher = { id = "com.github.triplet.play", version = "3.8.1" }
