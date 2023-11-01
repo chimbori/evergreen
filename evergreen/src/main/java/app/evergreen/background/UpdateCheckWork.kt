@@ -46,7 +46,7 @@ object JobManager {
       .build()
     WorkManager.getInstance(context).enqueueUniquePeriodicWork(
       TAG,
-      ExistingPeriodicWorkPolicy.REPLACE,
+      ExistingPeriodicWorkPolicy.UPDATE,
       PeriodicWorkRequest.Builder(UpdateCheckWork::class.java, 24, TimeUnit.HOURS)
         .addTag(TAG)
         .setConstraints(constraints)

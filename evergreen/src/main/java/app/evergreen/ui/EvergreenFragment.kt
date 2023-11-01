@@ -48,7 +48,7 @@ class EvergreenFragment : BrowseSupportFragment() {
     if (!toolsRowExists) {
       rowsAdapter.add(ListRow(HeaderItem(requireContext().getString(R.string.tools)),
         ToolsObjectAdapter(requireContext()) { dialogFragment, tag ->
-          dialogFragment.show(requireFragmentManager(), tag)
+          dialogFragment.show(parentFragmentManager, tag)
         }
       ))
     }
@@ -64,13 +64,13 @@ class EvergreenFragment : BrowseSupportFragment() {
       rowsAdapter.add(
         ListRow(HeaderItem(requireContext().getString(R.string.updates)),
           UpdatesObjectAdapter(evergreenConfig) { dialogFragment, tag ->
-            dialogFragment.show(requireFragmentManager(), tag)
+            dialogFragment.show(parentFragmentManager, tag)
           })
       )
     }
 
     repo.errors.observe(this) { fetchError ->
-      requireFragmentManager().beginTransaction()
+      parentFragmentManager.beginTransaction()
         .replace(android.R.id.content, ErrorSupportFragment().apply {
           val context = this@EvergreenFragment.requireContext()
           imageDrawable = context.drawable(R.drawable.evergreen)
@@ -79,7 +79,7 @@ class EvergreenFragment : BrowseSupportFragment() {
           buttonClickListener = View.OnClickListener {
             QrCodeFragment.withText(
               fetchError.deviceUniqueId + "\n" + repo.getConfigUrl(fetchError.deviceUniqueId)
-            ).show(this@EvergreenFragment.requireFragmentManager(), QrCodeFragment.TAG)
+            ).show(this@EvergreenFragment.parentFragmentManager, QrCodeFragment.TAG)
           }
         })
         .commit()
