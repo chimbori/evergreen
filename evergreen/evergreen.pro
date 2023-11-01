@@ -1,11 +1,7 @@
 # ProGuard configuration for Evergreen
-
 -mergeinterfacesaggressively
 -flattenpackagehierarchy
 -repackageclasses
--printseeds
--printusage
-
 
 # Data Model:
 # -----------
