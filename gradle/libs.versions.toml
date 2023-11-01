@@ -30,4 +30,4 @@ okhttp = "com.squareup.okhttp3:okhttp:4.11.0"
 [plugins]
 ben-manes-versions = { id = "com.github.ben-manes.versions", version = "0.48.0" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-play-publisher = { id = "com.github.triplet.play", version = "3.8.1" }
+play-publisher = { id = "com.github.triplet.play", version = "3.8.4" }
