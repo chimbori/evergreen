@@ -27,15 +27,14 @@ val versionPatch = 0
 
 android {
   namespace = "app.evergreen"
-  compileSdk = 33
-
+  compileSdk = libs.versions.compileSdk.get().toInt()
   buildFeatures {
     buildConfig = true
   }
   defaultConfig {
     applicationId = "app.evergreen"
-    minSdk = 21
-    targetSdk = 33
+    minSdk = libs.versions.minSdk.get().toInt()
+    targetSdk = libs.versions.targetSdk.get().toInt()
     versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
     versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
   }
