@@ -5,7 +5,7 @@ minSdk = "28"
 
 kotlin = "1.8.20"
 coroutines = "1.6.4"
-gradle-plugin = "8.0.2"
+gradle-plugin = "8.1.2"
 moshi = "1.15.0"
 
 [libraries]
