@@ -15,13 +15,13 @@ multiple places, this app automates the process.
 
 -   Locate the one with the icon below, and install it.
 
-    <a href="docs/evergreen.mp4"><img src="docs/evergreen-banner.png" alt="Evergreen Banner" width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"></a>
+    <a href="evergreen.mp4"><img src="evergreen-banner.png" alt="Evergreen Banner" width="320" style="border: 1px solid #cdcdcd; border-radius: 16px"></a>
 
 -   Press the Install button.
 
 ## How to Use
 
-<a target="_blank" href="docs/evergreen.mp4">Watch Video</a>
+<a target="_blank" href="evergreen.mp4">Watch Video</a>
 
 1.  Start the Evergreen app: say “Launch Evergreen” to Assistant.
 
