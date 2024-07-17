@@ -1,7 +1,7 @@
 title: Evergreen
 description: A debug tool for Android TV devices
-url: 'https://google.github.io/evergreen-checker'
-repository: google/evergreen-checker
+url: 'https://chimbori.github.io/evergreen'
+repository: chimbori/evergreen
 theme_color: '#9cc269'
 
 theme: null
