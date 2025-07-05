@@ -20,7 +20,7 @@ androidx-core-ktx = "androidx.core:core-ktx:1.16.0"
 androidx-leanback = "androidx.leanback:leanback:1.0.0"
 androidx-workmanager-runtime = "androidx.work:work-runtime-ktx:2.10.2"
 coil = "io.coil-kt:coil:2.4.0"
-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "moshi" }
