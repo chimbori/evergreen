@@ -30,7 +30,7 @@ plugins {
 
 allprojects {
   tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
+    compilerOptions {
       allWarningsAsErrors = true
     }
   }
