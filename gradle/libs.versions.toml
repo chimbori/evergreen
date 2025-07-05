@@ -6,7 +6,7 @@ minSdk = "26"
 kotlin = "1.9.20"
 ksp = "1.9.20-1.0.13"
 coroutines = "1.6.4"
-gradle-plugin = "8.1.2"
+gradle-plugin = "8.11.0"
 moshi = "1.15.0"
 
 [libraries]
