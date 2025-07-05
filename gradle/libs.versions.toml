@@ -7,7 +7,7 @@ kotlin = "2.1.21"
 ksp = "2.1.21-2.0.2"
 coroutines = "1.6.4"
 gradle-plugin = "8.11.0"
-moshi = "1.15.0"
+moshi = "1.15.2"
 
 [libraries]
 # buildscript.dependencies
