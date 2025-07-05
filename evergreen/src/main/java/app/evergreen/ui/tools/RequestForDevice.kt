@@ -20,14 +20,11 @@ import android.os.Build.BRAND
 import android.os.Build.DEVICE
 import android.os.Build.MODEL
 import android.os.Build.PRODUCT
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.Email.createEmailUri
 import app.evergreen.extensions.drawable
-import app.evergreen.extensions.toTargetSize
+import app.evergreen.extensions.withInsets
 import app.evergreen.ui.DialogOpener
-import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
 
 class RequestForDevice(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
@@ -35,10 +32,7 @@ class RequestForDevice(private val context: Context, private val dialogOpener: D
     get() = context.getString(R.string.request_for_device)
 
   override val mainImage: Drawable
-    get() = context.drawable(R.drawable.television)!!
-      .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toDrawable(context.resources)
+    get() = context.drawable(R.drawable.television).withInsets()
 
   override fun doAction() {
     dialogOpener.invoke(

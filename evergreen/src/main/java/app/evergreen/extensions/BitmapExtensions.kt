@@ -14,20 +14,7 @@
 
 package app.evergreen.extensions
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.InsetDrawable
 
-fun Bitmap.toTargetSize(targetWidth: Int, targetHeight: Int): Bitmap {
-  val targetBitmap = Bitmap.createBitmap(targetWidth, targetHeight, config)
-  val canvas = Canvas(targetBitmap)
-
-  val boundingBoxWidth: Int = (targetWidth * 0.6).toInt()
-  val boundingBoxHeight: Int = (targetHeight * 0.6).toInt()
-
-  val left: Float = (targetWidth * 0.2).toFloat()
-  val top: Float = (targetHeight * 0.2).toFloat()
-
-  val scaledSourceBitmap = Bitmap.createScaledBitmap(this, boundingBoxWidth, boundingBoxHeight, true)
-  canvas.drawBitmap(scaledSourceBitmap, left, top, null)
-  return targetBitmap
-}
+fun Drawable?.withInsets() = InsetDrawable(this, 0.2f)

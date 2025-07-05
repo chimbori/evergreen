@@ -23,16 +23,13 @@ import android.os.Build.DEVICE
 import android.os.Build.MODEL
 import android.os.Build.PRODUCT
 import android.service.voice.VoiceInteractionService
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.humanReadableByteCountSI
-import app.evergreen.extensions.toTargetSize
+import app.evergreen.extensions.withInsets
 import app.evergreen.services.log
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
-import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 /**
  * Checks whether Katniss is correctly configured as the platform-default [VoiceInteractionService]
@@ -43,10 +40,7 @@ class DeviceConfig(private val context: Context, private val dialogOpener: Dialo
     get() = context.getString(R.string.device_config)
 
   override val mainImage: Drawable
-    get() = context.drawable(R.drawable.wrench)!!
-      .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toDrawable(context.resources)
+    get() = context.drawable(R.drawable.wrench).withInsets()
 
   override fun doAction() {
     val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?

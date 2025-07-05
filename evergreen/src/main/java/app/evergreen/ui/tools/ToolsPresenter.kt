@@ -56,7 +56,7 @@ private class ToolsPresenter : Presenter() {
     setBackgroundColor(context.color(R.color.grey_700))
   })
 
-  override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
+  override fun onBindViewHolder(viewHolder: ViewHolder, item: Any?) {
     val imageCardView: ImageCardView = viewHolder.view as ImageCardView
     val tool = item as Tool
     imageCardView.apply {

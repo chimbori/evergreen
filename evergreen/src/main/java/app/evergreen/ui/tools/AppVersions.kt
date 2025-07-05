@@ -18,8 +18,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Build
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.config.EvergreenConfig
 import app.evergreen.config.Kind.APK
@@ -28,23 +26,19 @@ import app.evergreen.config.Kind.SYSTEM_BUILD
 import app.evergreen.config.Updatable
 import app.evergreen.config.Version
 import app.evergreen.extensions.drawable
-import app.evergreen.extensions.toTargetSize
+import app.evergreen.extensions.withInsets
 import app.evergreen.services.AppServices.repo
 import app.evergreen.services.log
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
-import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class AppVersions(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
 
   private fun getInstalledVersion(updatable: Updatable): String? = when (updatable.kind) {
-    APK -> {
-      try {
-        @Suppress("DEPRECATION")
-        context.packageManager.getPackageInfo(updatable.id!!, 0).versionName
-      } catch (e: PackageManager.NameNotFoundException) {
-        null  // App not installed, so it does not have a version name yet.
-      }
+    APK -> try {
+      context.packageManager.getPackageInfo(updatable.id!!, 0).versionName
+    } catch (e: PackageManager.NameNotFoundException) {
+      null  // App not installed, so it does not have a version name yet.
     }
     SYSTEM_BUILD -> Build.DISPLAY
     REMOTE_FIRMWARE -> null
@@ -54,10 +48,7 @@ class AppVersions(private val context: Context, private val dialogOpener: Dialog
     get() = context.getString(R.string.app_versions)
 
   override val mainImage: Drawable
-    get() = context.drawable(R.drawable.code_json)!!
-      .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toDrawable(context.resources)
+    get() = context.drawable(R.drawable.code_json).withInsets()
 
   override fun doAction() {
     repo.evergreenConfig.observeForever { evergreenConfig ->

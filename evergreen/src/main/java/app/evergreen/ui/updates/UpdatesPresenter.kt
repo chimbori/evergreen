@@ -19,8 +19,6 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import androidx.leanback.widget.BaseCardView.CARD_REGION_VISIBLE_ALWAYS
 import androidx.leanback.widget.BaseCardView.CARD_TYPE_INFO_UNDER_WITH_EXTRA
 import androidx.leanback.widget.ImageCardView
@@ -37,7 +35,7 @@ import app.evergreen.config.Updatable
 import app.evergreen.extensions.color
 import app.evergreen.extensions.drawable
 import app.evergreen.extensions.safeStartActivity
-import app.evergreen.extensions.toTargetSize
+import app.evergreen.extensions.withInsets
 import app.evergreen.ui.DialogOpener
 import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 import app.evergreen.ui.QrCodeFragment
@@ -78,7 +76,7 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
     }, dialogOpener)
   }
 
-  override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any) {
+  override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any?) {
     (viewHolder as ViewHolder).bind(item as Updatable)
   }
 
@@ -139,10 +137,7 @@ private class UpdatesPresenter(private val dialogOpener: DialogOpener) : Present
 
       CoroutineScope(Dispatchers.Main).launch {
         imageCardView.mainImage = withContext(Dispatchers.IO) {
-          updatableViewModel.getIcon()
-            .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-            .toDrawable(context.resources)
+          updatableViewModel.getIcon().withInsets()
         }
       }
     }

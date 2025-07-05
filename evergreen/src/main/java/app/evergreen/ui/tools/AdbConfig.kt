@@ -19,25 +19,19 @@ import android.content.Context.WIFI_SERVICE
 import android.graphics.drawable.Drawable
 import android.net.wifi.WifiManager
 import android.text.format.Formatter.formatIpAddress
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import app.evergreen.R
 import app.evergreen.extensions.drawable
-import app.evergreen.extensions.toTargetSize
+import app.evergreen.extensions.withInsets
 import app.evergreen.services.AppServices.systemProp
 import app.evergreen.ui.BigTextFragment
 import app.evergreen.ui.DialogOpener
-import app.evergreen.ui.MAIN_IMAGE_SIZE_DP
 
 class AdbConfig(private val context: Context, private val dialogOpener: DialogOpener) : Tool {
   override val titleText: String
     get() = context.getString(R.string.adb_config)
 
   override val mainImage: Drawable
-    get() = context.drawable(R.drawable.ip_network)!!
-      .toBitmap(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toTargetSize(MAIN_IMAGE_SIZE_DP, MAIN_IMAGE_SIZE_DP)
-      .toDrawable(context.resources)
+    get() = context.drawable(R.drawable.ip_network).withInsets()
 
   override fun doAction() {
     val wifiManager = context.applicationContext.getSystemService(WIFI_SERVICE) as WifiManager

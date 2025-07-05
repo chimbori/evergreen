@@ -29,14 +29,12 @@ class ApkViewModel(context: Context, updatable: Updatable) : AbstractUpdatableVi
       null
     } else {
       try {
-        @Suppress("DEPRECATION")
         context.packageManager.getPackageInfo(updatable.id!!, 0).versionName
       } catch (e: PackageManager.NameNotFoundException) {
         null // App not installed, so it does not have a version name yet.
       }
     }
 
-  @Suppress("DEPRECATION")
   override val installedVersionCode: Long?
     get() = if (updatable.id == null) {
       null
@@ -48,15 +46,16 @@ class ApkViewModel(context: Context, updatable: Updatable) : AbstractUpdatableVi
       }
     }
 
-  @Suppress("DEPRECATION")
   override val titleText: String
-    get() = try {
-      val packageManager = context.packageManager
-      packageManager.getApplicationLabel(
-        context.packageManager.getPackageInfo(updatable.id!!, 0).applicationInfo
-      ).toString()
-    } catch (e: PackageManager.NameNotFoundException) {
-      updatable.id ?: context.getString(R.string.unknown)
+    get() {
+      try {
+        val packageManager = context.packageManager
+        val applicationInfo = context.packageManager.getPackageInfo(updatable.id!!, 0).applicationInfo
+          ?: return context.getString(R.string.unknown)
+        return packageManager.getApplicationLabel(applicationInfo).toString()
+      } catch (e: PackageManager.NameNotFoundException) {
+        return updatable.id ?: context.getString(R.string.unknown)
+      }
     }
 
   override suspend fun getIcon(): Drawable = try {
