@@ -70,7 +70,6 @@
 
   <application
     android:name=".EvergreenApplication"
-    android:allowBackup="false"
     android:banner="@mipmap/android_banner"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
